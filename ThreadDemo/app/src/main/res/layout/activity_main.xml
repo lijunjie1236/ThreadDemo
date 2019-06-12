@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="子线程运行打印10次，在主线程100次，如此交互50次"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="method1"
+    />
+
+
+    <Button
+        android:id="@+id/customer_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义线程池"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn"
+        android:onClick="method2"
+       />
+
+    <Button
+        android:id="@+id/prioritypool_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="优先级线程池"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="method3"
+        app:layout_constraintTop_toBottomOf="@id/customer_btn"
+        />
+
+</android.support.constraint.ConstraintLayout>
