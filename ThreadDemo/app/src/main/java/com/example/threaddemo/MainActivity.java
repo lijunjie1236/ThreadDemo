@@ -59,6 +59,24 @@ public class MainActivity extends AppCompatActivity {
         sub=new Thread(subThread,"SubThread");
     }
 
+    int k = 0;
+    public void test(View view) {
+        //i++ 是线程不安全
+        /**
+         * 每个线程都有自己的工作内存，每个线程需要对共享变量操作时必须先把共享变量从主内存 load 到自己的工作内存，等完成对共享变量的操作时再 save 到主内存。
+         * 问题就出在这了，如果一个线程运算完后还没刷到主内存，此时这个共享变量的值被另外一个线程从主内存读取到了，这个时候读取的数据就是脏数据了，它会覆盖其他线程计算完的值。
+         * 可参考drawable/memorymodel.mepg 内存模型
+         */
+         for(int i=0;i<20;i++){
+             new Thread(new Runnable() {
+                 @Override
+                 public void run() {
+                     System.out.println(Thread.currentThread().getName()+"_"+(++k));
+                 }
+             }).start();
+         }
+    }
+
     /**
      * 1.开启一个子线程和主线程同一时候运行，子线程先输出10次后接着主线程输出20次，如此重复5次
      */
